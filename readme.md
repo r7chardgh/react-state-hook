@@ -11,7 +11,7 @@
 ### v0.0.1
 - Convert the React state code to object format & JSON format
 - Produce the useState statement
-- Log 
+- Log
 - Few types are available: number, string, function 
 
 ### v0.0.2 (Planning)
