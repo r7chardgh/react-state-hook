@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React State Hook Generator</title>
+    <meta name="description" content="A simple generator for react hook" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <!-- <div class="counter">
+        Total:
+        <div id="total">0</div>
+      </div> -->
+      <div class="log-wrapper container">
+        <div id="logClean" class="btn log-clean">clean</div>
+        <h1>Log</h1>
+        <div id="log" class="log"></div>
+        <div class="app-version">v0.0.1</div>
+        <div id="details" class="app-version-details"></div>
+      </div>
+      <div id="root" class="panel container">
+        <!-- <input id="addrow" type="button" value="add row" class="btn" /> -->
+        <!-- <input id="deleterow" type="button" value="delete row" class="btn" /> -->
+        <h1>Put your react state here:</h1>
+        <textarea name="input" id="target" cols="30" rows="10">
+var person = {
+          firstName: "Richard",
+          lastName : "Tsang",
+          uid       : 5201314,
+          fullName : function() {
+            return this.firstName + " " + this.lastName;
+          }
+        };
+        //you can modify it to see the result
+        </textarea>
+        <div class="noti">Currently do not accept object and array</div>
+      </div>
+      <div class="result-wrapper container">
+        <h1>Result</h1>
+        <h2>Object Format</h2>
+        <code id="objResult" class="result"></code>
+        <h2>JSON Format</h2>
+        <code id="jsonResult" class="result"></code>
+        <h2>useState()</h2>
+        <code id="stateResult" class="result"></code>
+      </div>
+    </main>
+    <footer>Coded by <a href="/">Richard Tsang</a></footer>
+    <script type="module" src="./src/scripts/script.js"></script>
+  </body>
+</html>
