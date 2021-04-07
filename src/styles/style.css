@@ -75,7 +75,7 @@ textarea.light {
 .log {
   border: 1rem solid var(--main-color);
   border-radius: 0.3rem;
-  margin: 100px 0;
+  margin: 1rem 0;
   padding: 1rem;
   height: 50%;
   overflow: auto;
