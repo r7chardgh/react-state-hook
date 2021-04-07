@@ -32,13 +32,13 @@ function addOnChange(inputId, outputId) {
       result = convertToObject(document.getElementById(inputId).value);
       updateResult(inputId, outputId, result);
     };
-    log("Initialized");
+    log("initialized");
   } catch (err) {
     console.log(err);
     console.warn(
       "You should make sure your inputId: " + inputId + " is correct."
     );
-    log("Something went wrong...initializing failed!");
+    log("something went wrong...initializing failed!", err);
   }
 
   return false;
@@ -48,13 +48,13 @@ function updateResult(inputId, outputId, result) {
     displayObject(result);
     displayJSON(result);
     displayState(result);
-    log("Result is updated.");
+    log("result is updated.");
   } catch (err) {
     console.log(err);
     console.warn(
       "You should make sure your outputId: " + outputId + " is correct."
     );
-    log("Something went wrong... the result is not up-to-date.");
+    log("something went wrong... the result is not up-to-date.", err);
   }
 }
 function convertToObject(text) {
@@ -82,7 +82,8 @@ function convertToObject(text) {
       } catch (err) {
         console.log(err);
         log(
-          "Something went wrong... the STRING has not saved yet! Please make sure you type it right!"
+          "something went wrong... the STRING has not saved yet! please make sure you type it right!",
+          err
         );
       }
     } else if (match[2]) {
@@ -91,7 +92,8 @@ function convertToObject(text) {
       } catch (err) {
         console.log(err);
         log(
-          "Something went wrong... the NUMBER has not saved yet! Please make sure you type it right!"
+          "something went wrong... the NUMBER has not saved yet! please make sure you type it right!",
+          err
         );
       }
     } else if (match[3]) {
@@ -106,7 +108,8 @@ function convertToObject(text) {
       } catch (err) {
         console.log(err);
         log(
-          "Something went wrong... the FUNCTION OBJECT has not saved yet! Please make sure you type it right!"
+          "something went wrong... the FUNCTION OBJECT has not saved yet! please make sure you type it right!",
+          err
         );
       }
     } else if (match[4]) {
@@ -115,7 +118,8 @@ function convertToObject(text) {
       } catch (err) {
         console.log(err);
         log(
-          "Something went wrong... the NULL has not saved yet! Please make sure you type it right!"
+          "something went wrong... the NULL has not saved yet! Please make sure you type it right!",
+          err
         );
       }
     }
@@ -124,8 +128,8 @@ function convertToObject(text) {
     result[properties[index]] = field;
     return result;
   }, {});
-  if (values.length === 0) log("Your input is empty or not validated");
-  else log("Text is converted to an object.");
+  if (values.length === 0) log("your input is empty or not validated");
+  else log("text is converted to an object.");
   return result;
 }
 function displayObject(result) {
@@ -179,11 +183,19 @@ function displayState(result) {
 
 function log(message, err) {
   var textNode = document.createTextNode(message);
+  var span = document.createElement("span");
   var breakline = document.createElement("br");
   var target = document.getElementById("log");
   try {
     target.appendChild(breakline);
-    target.appendChild(textNode);
+    if (err) {
+      span.appendChild(textNode);
+      span.style.backgroundColor = "red";
+      span.style.color = "white";
+      target.appendChild(span);
+    } else {
+      target.appendChild(textNode);
+    }
     target.scrollBy(0, target.clientHeight);
   } catch (err) {
     console.log(err);
